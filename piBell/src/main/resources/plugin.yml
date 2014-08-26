@@ -1,0 +1,3 @@
+name: piBell
+main: io.github.EmbeddedPi.piBell.piBell
+version: 0.0.1-SNAPSHOT
