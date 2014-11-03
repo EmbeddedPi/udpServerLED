@@ -1,4 +1,5 @@
 piBell
+======
 A status indicator plugin for a RaspberryPi Minecraft server
 
 This project is named piBell as it was originally intended to act as a virtual doorbell for a RaspberryPi powered Minecraft server by playing sounds through an external speaker when players join or leave the server. The focus has changed somewhat to have LEDs showing the follow status items instead.
