@@ -2,7 +2,7 @@ piLED
 ======
 A status indicator plugin for a RaspberryPi Minecraft server
 
-This application dispalys the status of a Minecraft server on external LEDs.
+This application displays the status of a Minecraft server on external LEDs.
 
 Server is online (GPIO18) 
 LAN players present (GPIO23) 
