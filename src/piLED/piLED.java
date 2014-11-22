@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.io.File;
 import java.io.FileWriter;
 
-public final class piBell extends JavaPlugin implements Listener {
+public final class piLED extends JavaPlugin implements Listener {
 	
 	private short local = 0;
 	private short notLocal = 0;
