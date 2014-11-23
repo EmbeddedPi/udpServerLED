@@ -1,6 +1,5 @@
 package piLED;
 
-
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.event.Listener;
 import org.bukkit.event.EventHandler;
@@ -9,7 +8,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import java.io.File;
 import java.io.FileWriter;
 
-public final class piLED extends JavaPlugin implements Listener {
+public final class Main extends JavaPlugin implements Listener {
 	
 	private short local = 0;
 	private short notLocal = 0;
