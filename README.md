@@ -5,11 +5,11 @@ A status indicator plugin for a RaspberryPi Minecraft server
 
 This application displays the status of a Minecraft server on external LEDs using Raspberry Pi GPIO pins.
 
-Server is online (GPIO18) 
+Server is online (GPIO18) -> Red
 
-LAN players present (GPIO23) 
+LAN players present (GPIO23) -> Yellow
 
-Internet players present (GPIO24)
+Internet players present (GPIO24) -> Green
 
 
 
@@ -17,16 +17,14 @@ Internet players present (GPIO24)
 
 Current status
 
-Detection of player type code implemented
-
-LED control code implemented 
-
-Stripboard prototype working
+Fully working and tested on Glowstone and Spigot
 
 
 
 
 
-Future enhancements
+Hardware
 
-Include schematic for breadboard (although it is just 330Ohm resistors and LEDs to each GPIO pin)
+Schematic and physical hardware can be seen on the project site.
+
+[http://embeddedpi.github.io/piLED/](http://embeddedpi.github.io/piLED/)
