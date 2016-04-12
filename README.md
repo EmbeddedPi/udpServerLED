@@ -17,8 +17,7 @@ Internet players present (GPIO24) -> Green
 
 Current status
 
-Fully working and tested on Glowstone and Spigot
-
+Fully working and tested on Glowstone and Spigot.
 
 
 
