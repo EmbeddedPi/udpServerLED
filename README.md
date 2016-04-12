@@ -17,7 +17,8 @@ Internet players present (GPIO24) -> Green
 
 Current status
 
-Fully working and tested on Glowstone and Spigot.
+Fully working and tested on Glowstone and Spigot
+
 
 
 
@@ -25,5 +26,4 @@ Fully working and tested on Glowstone and Spigot.
 Hardware
 
 Schematic and physical hardware can be seen on the project site.
-
 [http://embeddedpi.github.io/piLED/](http://embeddedpi.github.io/piLED/)
