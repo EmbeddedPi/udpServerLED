@@ -12,15 +12,16 @@ LAN players present (GPIO23) -> Yellow
 Internet players present (GPIO24) -> Green
 
 
-
+Usage
+=====
+This repository is a maven project based on source code built in Eclipse. If you just want to build it without delving into the code then 
+just download the .jar from the latest release.
+[https://github.com/EmbeddedPi/piLED/releases](https://github.com/EmbeddedPi/piLED/releases)
 
 
 Current status
 ==============
 Fully working and tested on Glowstone and Spigot
-
-
-
 
 
 Hardware
