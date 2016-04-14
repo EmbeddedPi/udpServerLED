@@ -63,8 +63,7 @@ public final class Main extends JavaPlugin implements Listener {
 		
 		// Switch on server LED
 		writeLED (gpioChannel[0], gpioOn);
-		// TODO Make a list of players on server with an ArrayList
-		getLogger().info("piBell is ready to go ding dong"); 
+		getLogger().info("piLED is switched on."); 
 	}
  
     @Override
@@ -73,7 +72,7 @@ public final class Main extends JavaPlugin implements Listener {
         writeLED (gpioChannel[0], gpioOff);
         writeLED (gpioChannel[1], gpioOff);
         writeLED (gpioChannel[2], gpioOff);
-        getLogger().info("piBell has left the building");
+        getLogger().info("piLED has been extinguished.");
     }
     
     // Someone joins server
@@ -86,8 +85,6 @@ public final class Main extends JavaPlugin implements Listener {
     	isLocal();
     	// Update local/notLocal LED status according
     	updateLED();
-        // TODO Play a sound on server's speakers
-        // playsound("random.fuse");
         // The following lines are for test purposes only
     	debugMessage();	
     }
@@ -102,8 +99,6 @@ public final class Main extends JavaPlugin implements Listener {
     	isLocal();
     	// Update local/notLocal LED status according
     	updateLED();
-    	// TODO Play a sound on server's speakers
-    	// playsound("mob.creeper.death");
     	// The following lines are for test purposes only
     	debugMessage();
     }
