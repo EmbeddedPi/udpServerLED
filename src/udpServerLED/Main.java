@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
 
 public class Main {
 		
@@ -20,56 +21,60 @@ public class Main {
 	private static final String gpioOff = "0";
 	private static final int[] gpioChannel = {18,23,24};
 
-public Main () throws IOException {		
-		// Open file handles for GPIO unexport and export
-				try {
-					FileWriter unexportFile = new FileWriter(unexportPath);
-					FileWriter exportFile = new FileWriter(exportPath);
+public Main () throws SocketException {		
+	// Open file handles for GPIO unexport and export
+	try {
+		FileWriter unexportFile = new FileWriter(unexportPath);
+		FileWriter exportFile = new FileWriter(exportPath);
 				
-					// Initialise GPIO settings
-					for (Integer channel : gpioChannel) {
-						File exportFileCheck = new File(getDevicePath(channel));
-						if (exportFileCheck.exists()) {
-							unexportFile.write(channel.toString());
-							unexportFile.flush();	
-							}
-						// Set port for use
-						exportFile.write(channel.toString());
-						exportFile.flush();
-						//Set direction file
-						FileWriter directionFile = new FileWriter(getDirectionPath(channel));
-						directionFile.write(gpioOut);
-						directionFile.flush();
-						directionFile.close();
-						}
+		// Initialise GPIO settings
+		for (Integer channel : gpioChannel) {
+			File exportFileCheck = new File(getDevicePath(channel));
+			if (exportFileCheck.exists()) {
+				unexportFile.write(channel.toString());
+				unexportFile.flush();	
+			}
+			// Set port for use
+			exportFile.write(channel.toString());
+			exportFile.flush();
+			//Set direction file
+			FileWriter directionFile = new FileWriter(getDirectionPath(channel));
+			directionFile.write(gpioOut);
+			directionFile.flush();
+			directionFile.close();
+		}
 							
-					unexportFile.close();
-					exportFile.close();
-					}
-				catch (Exception exception) {
-					exception.printStackTrace();
-					}
-				
+		unexportFile.close();
+		exportFile.close();
+	}
+	catch (Exception exception) {
+		exception.printStackTrace();
+	}
+	
+	// Open socket for communication
 	DatagramSocket serverSocket = new DatagramSocket(9876);
-        byte[] receiveData = new byte[1024];
-        byte[] sendData = new byte[1024];
-//TODO try catch this block and close socket/throw exception
-        while(true){
-                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-                 serverSocket.receive(receivePacket);
-                 String sentence = new String( receivePacket.getData());
-                 System.out.println("RECEIVED: " + sentence);
-                 InetAddress IPAddress = receivePacket.getAddress();
-                 int port = receivePacket.getPort();
-				   System.out.println("Got this from " + IPAddress + " @ port " + port);
-                 String capitalizedSentence = sentence.toUpperCase();
-                 sendData = capitalizedSentence.getBytes();
-                 DatagramPacket sendPacket =
-                 new DatagramPacket(sendData, sendData.length, IPAddress, port);
-                 serverSocket.send(sendPacket);
-                 updateLED();
-              }
-        
+    byte[] receiveData = new byte[1024];
+    byte[] sendData = new byte[1024];
+    while(true){
+    	try {
+    		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+            serverSocket.receive(receivePacket);
+            String sentence = new String( receivePacket.getData());
+            System.out.println("Received: " + sentence);
+            InetAddress IPAddress = receivePacket.getAddress();
+            int port = receivePacket.getPort();
+            System.out.println("Got this from " + IPAddress + " @ port " + port);
+            String returnSentence = "Received " + sentence;
+            sendData = returnSentence.getBytes();
+            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
+            serverSocket.send(sendPacket);
+            updateLED();
+    		}
+        	catch (IOException exception) {
+                 exception.printStackTrace();
+                 serverSocket.close();
+        	}
+    	}
 	}
 
     // Variable setting for device path
