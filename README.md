@@ -14,8 +14,8 @@ Internet players present (GPIO24) => Green
 
 Usage
 =====
-This repository is a Maven project based on source code built in Eclipse. If you just want to build it without delving into the code then 
-just download the completed plugin .jar from the latest release.
+This repository is a Maven project based on source code built in Eclipse. If you just want to run it without delving into the code then 
+just download the completed .jar for the latest release.
 
 TBC
 [https://github.com/EmbeddedPi/udpServerLED/releases](https://github.com/EmbeddedPi/udpServerLED/releases)
@@ -23,8 +23,8 @@ TBC
 
 Current status
 ==============
-Fully working and tested on Glowstone and Spigot (for the minecraft server) and RaspberryPi (for this part)
-
+Under development.
+Currently has issue with manifest preventing execution.
 
 Hardware
 ========
