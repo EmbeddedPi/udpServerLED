@@ -14,13 +14,20 @@
             	<version>3.3</version>
             	<configuration>
             		<source>1.8</source>
-            		<target>1.8</target>
-            		<archive>
-            			<manifest>
-            				<addClasspath>true</addClasspath>
-            				<mainClass>com.udpServerLED.Main</mainClass>
-            			</manifest>
-            		</archive>
+            		<target>1.8</target>        		
+            	</configuration>
+            </plugin>
+            <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-jar-plugin</artifactId>
+            	<version>2.4</version>
+            	<configuration>
+            	<archive>
+            		<manifest>
+            			<addClasspath>true</addClasspath>
+            			<mainClass>udpServerLED.Main</mainClass>
+            		</manifest>
+            	</archive>
             	</configuration>
 			</plugin>
 		</plugins>

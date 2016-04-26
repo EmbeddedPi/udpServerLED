@@ -21,8 +21,9 @@ public class Main {
 	private static final String gpioOff = "0";
 	private static final int[] gpioChannel = {18,23,24};
 
-public Main () throws SocketException {		
+public static void main (String args[]) throws SocketException {		
 	// Open file handles for GPIO unexport and export
+	System.out.println("udpServer is initialising GPIO pins");
 	try {
 		FileWriter unexportFile = new FileWriter(unexportPath);
 		FileWriter exportFile = new FileWriter(exportPath);
@@ -57,6 +58,7 @@ public Main () throws SocketException {
     byte[] sendData = new byte[1024];
     while(true){
     	try {
+    		System.out.println("udpServer is preparing to receive packets");
     		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             serverSocket.receive(receivePacket);
             String sentence = new String( receivePacket.getData());
@@ -64,7 +66,7 @@ public Main () throws SocketException {
             InetAddress IPAddress = receivePacket.getAddress();
             int port = receivePacket.getPort();
             System.out.println("Got this from " + IPAddress + " @ port " + port);
-            String returnSentence = "Received " + sentence;
+            String returnSentence = "Server got.... " + sentence;
             sendData = returnSentence.getBytes();
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
             serverSocket.send(sendPacket);
@@ -93,7 +95,7 @@ public Main () throws SocketException {
     }
 
     // Update player LED status
-    private void updateLED() {
+    private static void updateLED() {
     		writeLED (gpioChannel[1], gpioOn);
     		writeLED (gpioChannel[1], gpioOff);
     		writeLED (gpioChannel[2], gpioOn); 		
@@ -101,7 +103,7 @@ public Main () throws SocketException {
     }
     
     // LED IO 
-    private void writeLED (int channel, String status) {
+    private static void writeLED (int channel, String status) {
     	try {
      		FileWriter commandFile = new FileWriter(getValuePath(channel));
      		commandFile.write(status);
