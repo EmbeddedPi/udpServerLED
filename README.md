@@ -24,7 +24,9 @@ TBC
 Current status
 ==============
 Under development.
-Currently has issue with manifest preventing execution.
+Manifest issue now fixed and executes.
+TODO
+Link udp datagrams to LED ouputs.
 
 Hardware
 ========
