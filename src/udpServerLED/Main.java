@@ -56,6 +56,7 @@ public static void main (String args[]) throws SocketException {
 	DatagramSocket serverSocket = new DatagramSocket(9876);
     byte[] receiveData = new byte[1024];
     byte[] sendData = new byte[1024];
+    String returnSentence;
     while(true){
     	try {
     		System.out.println("udpServer is preparing to receive packets");
@@ -65,18 +66,49 @@ public static void main (String args[]) throws SocketException {
             System.out.println("Received: " + sentence);
             InetAddress IPAddress = receivePacket.getAddress();
             int port = receivePacket.getPort();
-            System.out.println("Got this from " + IPAddress + " @ port " + port);
-            String returnSentence = "Server got.... " + sentence;
-            sendData = returnSentence.getBytes();
+            System.out.println("Got this from " + IPAddress + " @ port " + port);        
+            boolean validInput = checkInput(sentence);
+            System.out.println("Valid input is  " + validInput); 
+            if (validInput){
+            	returnSentence = "Server got.... " + sentence + ". Valid, lights should be seen!.";
+            } else {
+            	returnSentence = "Server got.... " + sentence + ". Not a valid command, away with you!";
+            }
+			sendData = returnSentence.getBytes();
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
             serverSocket.send(sendPacket);
-            updateLED();
     		}
         	catch (IOException exception) {
                  exception.printStackTrace();
                  serverSocket.close();
         	}
     	}
+	}
+
+	private static Boolean checkInput (String sentence) {
+		switch (sentence) {
+		
+		case "RedOn": 	writeLED (gpioChannel[0], gpioOn); 
+						return false;	
+		 				
+		case "RedOff": writeLED (gpioChannel[0], gpioOff); 
+						return false;	
+			
+		case "AmberOn": 	writeLED (gpioChannel[1], gpioOn); 
+						return false;	
+			
+		case "AmberOff": 	writeLED (gpioChannel[1], gpioOff); 
+						return false;
+			
+		case "GreenOn": 	writeLED (gpioChannel[2], gpioOn); 
+						return false;	
+					
+		case "GreenOff": 	writeLED (gpioChannel[2], gpioOff); 
+						return false;							
+		
+		default:		writeLED (gpioChannel[1], gpioOn);
+						return true ;
+		}
 	}
 
     // Variable setting for device path
@@ -93,7 +125,9 @@ public static void main (String args[]) throws SocketException {
     private static String getValuePath(int pinNumber) {
  	   return String.format(valuePath, pinNumber);
     }
-
+    
+//Test code
+ /*
     // Update player LED status
     private static void updateLED() {
     		writeLED (gpioChannel[1], gpioOn);
@@ -101,6 +135,7 @@ public static void main (String args[]) throws SocketException {
     		writeLED (gpioChannel[2], gpioOn); 		
     		writeLED (gpioChannel[2], gpioOff);    			
     }
+*/
     
     // LED IO 
     private static void writeLED (int channel, String status) {
