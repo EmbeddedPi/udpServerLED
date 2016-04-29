@@ -110,14 +110,21 @@ public static void main (String args[]) throws SocketException {
 					
 		case "Green Off": 	writeLED (gpioChannel[2], gpioOff); 
 						return true;
+	
+		case "All On":		writeLED (gpioChannel[0], gpioOn);
+							writeLED (gpioChannel[1], gpioOn);
+							writeLED (gpioChannel[2], gpioOn);	
+						return true;
 						
-		case "Funky Disco": 	funkyDisco();
-							return true;
+		case "All Off":		writeLED (gpioChannel[0], gpioOff);
+							writeLED (gpioChannel[1], gpioOff);
+							writeLED (gpioChannel[2], gpioOff);	
+						return true;
+						
+		case "Funky Disco": funkyDisco();
+						return true;
 		
-		default:		writeLED (gpioChannel[0], gpioOn);
-						writeLED (gpioChannel[1], gpioOff);
-						writeLED (gpioChannel[2], gpioOff);
-						return false ;
+		default:		return false ;
 		}
 	}
 
