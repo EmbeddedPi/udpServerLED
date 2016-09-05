@@ -146,7 +146,7 @@ public static void main (String args[]) throws SocketException {
 //Test code
     private static void funkyDisco() {
     	int pause = 150;
-    	for (int i=0; i<50; i++) {
+    	for (int i=0; i<10; i++) {
     		try {
     		writeLED (gpioChannel[0], gpioOn);
         	Thread.sleep(pause);
