@@ -54,7 +54,6 @@ public static void main (String args[]) throws SocketException {
 	
 	// Open socket for communication
 	DatagramSocket serverSocket = new DatagramSocket(9876);
-//    byte[] receiveData = new byte[16];
     byte[] sendData = new byte[16];
     String returnSentence;
     while(true){
@@ -64,9 +63,7 @@ public static void main (String args[]) throws SocketException {
     		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
     		serverSocket.receive(receivePacket);
             String sentence = new String( receivePacket.getData());
-//            sentence = sentence.replaceAll("[^\\p{ASCII}]", "A");
             sentence = sentence.replaceAll("[^\\p{Print}]", "");
-//            sentence = sentence.replaceAll("[^\\p{C}]", "C");
             System.out.println("Received: " + sentence);
             InetAddress IPAddress = receivePacket.getAddress();
             int port = receivePacket.getPort();
@@ -138,7 +135,7 @@ public static void main (String args[]) throws SocketException {
  	   return String.format(directionPath, pinNumber);
     }
 
-    // Variable setting for value path
+    // Variable setting for value path	
     private static String getValuePath(int pinNumber) {
  	   return String.format(valuePath, pinNumber);
     }
@@ -179,4 +176,3 @@ public static void main (String args[]) throws SocketException {
         }
     }
 }
-
