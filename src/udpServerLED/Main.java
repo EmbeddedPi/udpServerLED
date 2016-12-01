@@ -54,7 +54,7 @@ public static void main (String args[]) throws SocketException {
 	
 	// Open socket for communication
 	DatagramSocket serverSocket = new DatagramSocket(9876);
-    byte[] sendData = new byte[16];
+    byte[] sendData = new byte[32];
     String returnSentence;
     while(true){
     	try {
@@ -71,9 +71,9 @@ public static void main (String args[]) throws SocketException {
             boolean validInput = checkInput(sentence);
             System.out.println("Valid input is  " + validInput); 
             if (validInput){
-            	returnSentence = "Server got.... " + sentence + ". Valid, lights should be seen!.";
+            	returnSentence = "Server got '" + sentence + "' Valid";
             } else {
-            	returnSentence = "Server got.... " + sentence + ". Not a valid command, away with you!";
+            	returnSentence = "Server got '" + sentence + "' Invalid";
             }
 			sendData = returnSentence.getBytes();
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
@@ -90,35 +90,35 @@ public static void main (String args[]) throws SocketException {
 		System.out.println("checkInput received " + sentence + ".");
 		switch (sentence) {
 		
-		case "Red On": 	writeLED (gpioChannel[0], gpioOn); 
+		case "Red_On": 	writeLED (gpioChannel[0], gpioOn); 
 						return true;
 						
-		case "Red Off": 	writeLED (gpioChannel[0], gpioOff); 
+		case "Red_Off": 	writeLED (gpioChannel[0], gpioOff); 
 						return true;	
 			
-		case "Amber On": 	writeLED (gpioChannel[1], gpioOn); 
+		case "Amber_On": 	writeLED (gpioChannel[1], gpioOn); 
 						return true;	
 			
-		case "Amber Off": 	writeLED (gpioChannel[1], gpioOff); 
+		case "Amber_Off": 	writeLED (gpioChannel[1], gpioOff); 
 						return true;
 			
-		case "Green On": 	writeLED (gpioChannel[2], gpioOn); 
+		case "Green_On": 	writeLED (gpioChannel[2], gpioOn); 
 						return true;	
 					
-		case "Green Off": 	writeLED (gpioChannel[2], gpioOff); 
+		case "Green_Off": 	writeLED (gpioChannel[2], gpioOff); 
 						return true;
 	
-		case "All On":		writeLED (gpioChannel[0], gpioOn);
+		case "All_On":		writeLED (gpioChannel[0], gpioOn);
 							writeLED (gpioChannel[1], gpioOn);
 							writeLED (gpioChannel[2], gpioOn);	
 						return true;
 						
-		case "All Off":		writeLED (gpioChannel[0], gpioOff);
+		case "All_Off":		writeLED (gpioChannel[0], gpioOff);
 							writeLED (gpioChannel[1], gpioOff);
 							writeLED (gpioChannel[2], gpioOff);	
 						return true;
 						
-		case "Funky Disco": funkyDisco();
+		case "Funky_Disco": funkyDisco();
 						return true;
 		
 		default:		return false ;
