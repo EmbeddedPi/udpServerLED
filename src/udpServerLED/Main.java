@@ -117,7 +117,7 @@ public static void main (String args[]) throws SocketException {
 							writeLED (gpioChannel[1], gpioOff);
 							writeLED (gpioChannel[2], gpioOff);	
 						return true;
-						
+		// TODO Look at an exception for this as causes timeout in udpClient				
 		case "Funky_Disco": funkyDisco();
 						return true;
 		
