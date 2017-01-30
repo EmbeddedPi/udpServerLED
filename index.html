@@ -15,10 +15,11 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>udpserverLED</h1>
-        <p>A RaspberryPi based LED notification for minecraft servers (Java). <BR> 
-	This programme works in conjunction with <a href="http://embeddedpi.github.io/udpServerLED/">udpServerLED</a>.<BR>
-        It is based on the original <a href="http://embeddedpi.github.io/piLED/">piLED</a> plugin and runs identical hardware.</p>
+        <h1>udpServerLED</h1>
+        <p>A RaspberryPi based LED notification for minecraft servers (Java). </p>
+        <p><BR> 
+          This programme works in conjunction with <a href="http://embeddedpi.github.io/udpClientLED/">udpClientLED</a>.<BR>
+          It is based on the original <a href="http://embeddedpi.github.io/piLED/">piLED</a> plugin and runs identical hardware.</p>
 
         <ul>
           <li><a href="https://github.com/EmbeddedPi/udpServerLED/zipball/master">Download <strong>ZIP File</strong></a></li>
@@ -30,8 +31,9 @@
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#Overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h3>
 
-<p>udpClientLED/udpServerLED is a traffic light based minecraft server notification system using a RaspberryPi. You will need a RaspberryPi which is connected to the physical hardware described in this guide in addition to a minecraft server. The LEDs indicate whether the server is running or not (red), if someone is logged in locally (amber) or if someone is logged in from outside (green). This has been tested on both Spigot and Glowstone implementations of the minecraft sever but should work on any other server type that will work on the RaspberryPi and accepts plugins.
-<BR><BR>udpServerLED is a standalone java application that runs on a RaspberryPi connected to the hardware described below. udpClientLED runs as a standrad Minecraft plugin on your Minecraft server. </p>
+<p>udpClientLED/udpServerLED is a traffic light based minecraft server notification system using a RaspberryPi. You will need a RaspberryPi which is connected to the physical hardware described in this guide in addition to an external minecraft server. If you are running the minecraft server on the RaspberryPi then you need the original piLED plugin form the link on the left. </p>
+<p>The LEDs indicate whether the server is running or not (red), if someone is logged in locally (amber) or if someone is logged in from outside (green). This has been tested on both Spigot and Glowstone implementations of the minecraft sever but should work on any other server type that  accepts plugins. <BR><BR>
+  udpServerLED is a standalone java application that runs on a RaspberryPi connected to the hardware described below. udpClientLED runs as a standard Minecraft plugin on your Minecraft server. </p>
 <p><img src="images/piLED.jpg" width="512"></p>
 
 
@@ -39,7 +41,8 @@
 <a id="designer-templates" class="anchor" href="#userguide" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h3>
 
 <p>If you are not interested in playing with the code then just download the latest .jar file from the releases section of the project.
-After downloading, copy it to your minecraft server plugins folder and follow the hardware guide below.</p>
+After downloading, copy it to your RaspberryPi, follow the hardware guide below then run the command (in the case for the v0.1jar) :-</p>
+<p>.java -jar udpServerLED-0.1.jar</p>
 <p> If you want to play with the source code then download the whole project from the links on the left. It was built in Eclipse using the Maven framework.</p>
 
 <h3>
