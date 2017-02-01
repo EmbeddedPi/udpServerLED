@@ -1,0 +1,84 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>udpClientLED by EmbeddedPi</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>udpServerLED</h1>
+        <p>A RaspberryPi based LED notification for minecraft servers (Java). </p>
+        <p><BR> 
+          This programme works in conjunction with <a href="http://embeddedpi.github.io/udpClientLED/">udpClientLED</a>.<BR>
+          It is based on the original <a href="http://embeddedpi.github.io/piLED/">piLED</a> plugin and runs identical hardware.</p>
+
+        <ul>
+          <li><a href="https://github.com/EmbeddedPi/udpServerLED/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/EmbeddedPi/udpServerLED/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/EmbeddedPi/udpServerLED">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#Overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h3>
+
+<p>udpClientLED/udpServerLED is a traffic light based minecraft server notification system using a RaspberryPi. You will need a RaspberryPi which is connected to the physical hardware described in this guide in addition to an external minecraft server. If you are running the minecraft server on the RaspberryPi then you need the original piLED plugin form the link on the left. </p>
+<p>The LEDs indicate whether the server is running or not (red), if someone is logged in locally (amber) or if someone is logged in from outside (green). This has been tested on both Spigot and Glowstone implementations of the minecraft sever but should work on any other server type that  accepts plugins. <BR><BR>
+  udpServerLED is a standalone java application that runs on a RaspberryPi connected to the hardware described below. udpClientLED runs as a standard Minecraft plugin on your Minecraft server. </p>
+<p><img src="images/piLED.jpg" width="512"></p>
+
+
+<h3>
+<a id="designer-templates" class="anchor" href="#userguide" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h3>
+
+<p>If you are not interested in playing with the code then just download the latest .jar file from the releases section of the project.
+After downloading, copy it to your RaspberryPi, follow the hardware guide below then run the command (in the case for the v0.1jar) :-</p>
+<p>.java -jar udpServerLED-0.1.jar</p>
+<p> If you want to play with the source code then download the whole project from the links on the left. It was built in Eclipse using the Maven framework.</p>
+
+<h3>
+<a id="designer-templates" class="anchor" href="#schematic" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Schematic and stripboard</h3>
+
+<p>The schematic is shown below. The only reason that R1 and D1 are in a different order is that made the stripboard planning easier</p>
+<p><img src="images/Schematic.png" width="512"></p>
+<p>Next up I tested it on breadboard. This was more to test the code than the circuit. Sorry for the messy photo but it's the only one I could find.</p>
+<p><img src="images/Breadboard.jpg" width="512"></p>
+<p>The stripboard plan is based on the size of board that would fit in the case so could easily be made smaller.</p>
+<p><img src="images/piLEDLayout.png" width="512"></p>
+<p>The top view shows the components and a wonderfully scrappy but functional bit of hot melt keeping the connector from moving.</p>
+<p><img src="images/PCB_Top.jpg" width="512"></p>
+<p>The bottom shows why soldering was never my day job. Note the cut outs for the screws to prevent shorting and the cut track matching the X on the plan.</p>
+<p><img src="images/PCB_Bottom.jpg" width="512"></p>
+
+<h3>
+<a id="case" class="anchor" href="#Case" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Case</h3>
+
+<p>I chose a case with a see through top as one of the purposes of this project (aside from fulfilling my penchant for fiddling with electronics and learning how to code again) is to show my children how stuff works. They're too young to start on electronics lessons so as long as they realise that there is physical stuff that needs to be put together (even if it is just 3 resistors and 3 LEDs) as oppose to just buying fully built things or downloading finished stuff then I'm happy.</p>
+<p><img src="images/CaseInside.jpg" width="512"></p>
+<p>If you want something more aesthetically pleasing then there are plenty of plain project boxes that would do the job and it may well be possible to squeeze the LEDs into an existing Pi case and avoid the need for any cables. The final picture shows the connections into the pi itself. I've done it this way to avoid exposing the full I/O contacts to curious fingers</p>
+<p><img src="images/Pi.jpg" width="512"></p>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>I wrote this, it's my first proper code for well over twenty years (Excel macros notwithstanding) and probably the same for electronics that wasn't work related. It's been fun perhaps with the exception of my woeful attempts to understand Git merges!</p>
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/EmbeddedPi">EmbeddedPi</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
