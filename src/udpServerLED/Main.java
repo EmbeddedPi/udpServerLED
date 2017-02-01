@@ -71,7 +71,11 @@ public static void main (String args[]) throws SocketException {
             boolean validInput = checkInput(sentence);
             System.out.println("Valid input is  " + validInput); 
             if (validInput){
-            	returnSentence = "Server got '" + sentence + "' Valid";
+            	if (sentence.equals("Oggy_Oggy_Oggy")) {
+            		returnSentence = "Oi_Oi_Oi";
+            	} else {
+            		returnSentence = "Server got '" + sentence + "' Valid";
+            	}
             } else {
             	returnSentence = "Server got '" + sentence + "' Invalid";
             }
@@ -117,6 +121,8 @@ public static void main (String args[]) throws SocketException {
 							writeLED (gpioChannel[1], gpioOff);
 							writeLED (gpioChannel[2], gpioOff);	
 						return true;
+		case "Oggy_Oggy_Oggy":
+						return true;			
 		// TODO Look at an exception for this as causes timeout in udpClient				
 		case "Funky_Disco": funkyDisco();
 						return true;
