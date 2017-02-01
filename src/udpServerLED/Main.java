@@ -121,7 +121,7 @@ public static void main (String args[]) throws SocketException {
 							writeLED (gpioChannel[1], gpioOff);
 							writeLED (gpioChannel[2], gpioOff);	
 						return true;
-		case "Oggy_Oggy_Oggy":
+		case "Oggy_Oggy_Oggy": 
 						return true;			
 		// TODO Look at an exception for this as causes timeout in udpClient				
 		case "Funky_Disco": funkyDisco();
@@ -149,7 +149,7 @@ public static void main (String args[]) throws SocketException {
 //Test code
     private static void funkyDisco() {
     	int pause = 150;
-    	for (int i=0; i<10; i++) {
+    	for (int i=0; i<5; i++) {
     		try {
     		writeLED (gpioChannel[0], gpioOn);
         	Thread.sleep(pause);
