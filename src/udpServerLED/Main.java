@@ -59,7 +59,7 @@ public static void main (String args[]) throws SocketException {
     while(true){
     	try {
     		System.out.println("udpServer is preparing to receive packets");
-    		byte[] receiveData = new byte[11];
+    		byte[] receiveData = new byte[14];
     		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
     		serverSocket.receive(receivePacket);
             String sentence = new String( receivePacket.getData());
