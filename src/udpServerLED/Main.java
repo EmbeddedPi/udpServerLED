@@ -59,7 +59,8 @@ public static void main (String args[]) throws SocketException {
     while(true){
     	try {
     		System.out.println("udpServer is preparing to receive packets");
-    		byte[] receiveData = new byte[14];
+    		byte[] receiveData = new byte[8];
+    		getLogger().info("Receiving packet at piLED, length =" + receiveData.length);
     		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
     		serverSocket.receive(receivePacket);
             String sentence = new String( receivePacket.getData());
@@ -80,6 +81,7 @@ public static void main (String args[]) throws SocketException {
             	returnSentence = "Server got '" + sentence + "' Invalid";
             }
 			sendData = returnSentence.getBytes();
+			getLogger().info("Sending packet from piLED, length =" + sendData.length);
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
             serverSocket.send(sendPacket);
     		}
