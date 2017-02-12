@@ -54,23 +54,24 @@ public static void main (String args[]) throws SocketException {
 	
 	// Open socket for communication
 	DatagramSocket serverSocket = new DatagramSocket(9876);
-    byte[] sendData = new byte[32];
+	//Possibly superfluous, delete after testing
+    //byte[] sendData = new byte[32];
     String returnSentence;
     while(true){
     	try {
-    		System.out.println("udpServer is preparing to receive packets");
+    		//System.out.println("udpServer is preparing to receive packets");
     		byte[] receiveData = new byte[14];
-    		System.out.println("Receiving packet at piLED, length =" + receiveData.length);
+    		System.out.println("Receiving packets at piLED, length=" + receiveData.length);
     		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
     		serverSocket.receive(receivePacket);
             String sentence = new String( receivePacket.getData());
             sentence = sentence.replaceAll("[^\\p{Print}]", "");
-            System.out.println("Received: " + sentence);
             InetAddress IPAddress = receivePacket.getAddress();
             int port = receivePacket.getPort();
-            System.out.println("Got this from " + IPAddress + " @ port " + port);        
+            System.out.println("Received '" + sentence + "' from " + IPAddress + " @port " + port );
             boolean validInput = checkInput(sentence);
-            System.out.println("Valid input is  " + validInput); 
+            //Debug code to delete after testing
+            System.out.println("checkInput is " + validInput); 
             if (validInput){
             	if (sentence.equals("Oggy_Oggy_Oggy")) {
             		returnSentence = "Oi_Oi_Oi";
@@ -80,8 +81,8 @@ public static void main (String args[]) throws SocketException {
             } else {
             	returnSentence = "Server got '" + sentence + "' Invalid";
             }
-			sendData = returnSentence.getBytes();
-			System.out.println("Sending packet from piLED, length =" + sendData.length);
+			byte[] sendData = returnSentence.getBytes();
+			System.out.println("Sending '" + returnSentence + "' from piLED, length=" + sendData.length);
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
             serverSocket.send(sendPacket);
     		}
@@ -93,7 +94,7 @@ public static void main (String args[]) throws SocketException {
 	}
 
 	private static Boolean checkInput (String sentence) {
-		System.out.println("checkInput received " + sentence + ".");
+		// System.out.println("checkInput received " + sentence + ".");
 		switch (sentence) {
 		
 		case "Red_On": 	writeLED (gpioChannel[0], gpioOn); 
