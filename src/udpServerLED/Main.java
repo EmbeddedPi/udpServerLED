@@ -60,7 +60,7 @@ public static void main (String args[]) throws SocketException {
     while(true){
     	try {
     		//System.out.println("udpServer is preparing to receive packets");
-    		byte[] receiveData = new byte[14];
+    		byte[] receiveData = new byte[15];
     		System.out.println("Receiving packets at piLED, length=" + receiveData.length);
     		DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
     		serverSocket.receive(receivePacket);
@@ -129,6 +129,9 @@ public static void main (String args[]) throws SocketException {
 		// TODO Look at an exception for this as causes timeout in udpClient				
 		case "Funky_Disco": funkyDisco();
 						return true;
+						
+		case "FlashOnFlashOff": flashOnOff();
+		return true;
 		
 		default:		return false ;
 		}
@@ -166,6 +169,23 @@ public static void main (String args[]) throws SocketException {
     		writeLED (gpioChannel[1], gpioOn);
     		Thread.sleep(pause);
     		writeLED (gpioChannel[1], gpioOff);
+    		} catch (InterruptedException e) {
+    			e.printStackTrace();
+    		}
+    	}   			
+    }
+    private static void flashOnOff() {
+    	int pause = 150;
+    	for (int i=0; i<5; i++) {
+    		try {
+    		writeLED (gpioChannel[0], gpioOn);
+        	writeLED (gpioChannel[1], gpioOn);
+    		writeLED (gpioChannel[2], gpioOn); 
+        	Thread.sleep(pause);
+        	writeLED (gpioChannel[0], gpioOff);
+        	writeLED (gpioChannel[1], gpioOff);
+        	writeLED (gpioChannel[2], gpioOff);
+    		Thread.sleep(pause);
     		} catch (InterruptedException e) {
     			e.printStackTrace();
     		}
